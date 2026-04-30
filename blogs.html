@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blogs page for personal portfolio website.">
+  <title>Blogs | Shadow Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="index.html">Shadow<span>Portfolio</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blogs.html" class="active">Blogs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero container reveal">
+      <h1>Blogs</h1>
+      <p>Short notes on front-end engineering, performance, and practical product development.</p>
+    </section>
+
+    <section class="blogs container reveal">
+      <div class="blogs-grid">
+        <article class="blog-card glow-card">
+          <h3>How I Design Fast UIs</h3>
+          <p>Practical methods I use to keep interfaces smooth on both mobile and desktop.</p>
+          <a href="#" aria-label="Read article about designing fast user interfaces">Read Preview</a>
+        </article>
+        <article class="blog-card glow-card">
+          <h3>Animations That Feel Natural</h3>
+          <p>A quick guide to timing, easing, and avoiding heavy visual noise in motion design.</p>
+          <a href="#" aria-label="Read article about natural animations">Read Preview</a>
+        </article>
+        <article class="blog-card glow-card">
+          <h3>From Student to Builder</h3>
+          <p>How I approach learning by shipping projects instead of only consuming tutorials.</p>
+          <a href="#" aria-label="Read article about project-based learning">Read Preview</a>
+        </article>
+        <article class="blog-card glow-card">
+          <h3>30-04-2026</h3>
+          <p>CREATED MY OWN PORTFOLIO WEBSITE.</p>
+          <a href="#" aria-label="Read article about project-based learning">Read Preview</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Your Name Here. All rights reserved.</p>
+      <div class="social-links" aria-label="Social media links">
+        <a href="#" aria-label="GitHub profile">GitHub</a>
+        <a href="#" aria-label="LinkedIn profile">LinkedIn</a>
+        <a href="#" aria-label="Instagram profile">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

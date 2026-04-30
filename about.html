@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About page for personal portfolio website.">
+  <title>About | Shadow Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="index.html">Shadow<span>Portfolio</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero container reveal">
+      <h1>About Me</h1>
+      <p>
+        I am a student developer focused on building efficient products with a strong visual identity
+        and maintainable code architecture.
+      </p>
+    </section>
+
+    <section class="about container reveal">
+      <div class="about-grid">
+        <article class="card glow-card">
+          <h3>College</h3>
+          <p>ABC Institute of Technology</p>
+          <p>B.Tech in Computer Science</p>
+        </article>
+        <article class="card glow-card">
+          <h3>Hobbies</h3>
+          <ul>
+            <li>UI/UX Experiments</li>
+            <li>Gaming & Strategy</li>
+            <li>Building Side Projects</li>
+          </ul>
+        </article>
+        <article class="card glow-card">
+          <h3>Interests</h3>
+          <ul>
+            <li>Web Development</li>
+            <li>Machine Learning</li>
+            <li>Creative Coding</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Your Name Here. All rights reserved.</p>
+      <div class="social-links" aria-label="Social media links">
+        <a href="#" aria-label="GitHub profile">GitHub</a>
+        <a href="#" aria-label="LinkedIn profile">LinkedIn</a>
+        <a href="#" aria-label="Instagram profile">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

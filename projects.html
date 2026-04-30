@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects page for personal portfolio website.">
+  <title>Projects | Shadow Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="index.html">Shadow<span>Portfolio</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+        ☰
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero container reveal">
+      <h1>Projects</h1>
+      <p>Selected work focused on usability, performance, and clean architecture.</p>
+    </section>
+
+    <section class="projects container reveal">
+      <div class="projects-grid">
+        <article class="project-card glow-card">
+          <div class="project-media media-1" role="img" aria-label="Project one preview"></div>
+          <div class="project-body">
+            <h3>Project Alpha</h3>
+            <p>Portfolio-ready app with smooth interactions and responsive architecture.</p>
+          </div>
+        </article>
+        <article class="project-card glow-card">
+          <div class="project-media media-2" role="img" aria-label="Project two preview"></div>
+          <div class="project-body">
+            <h3>Project Nebula</h3>
+            <p>Data-driven dashboard concept focused on speed, clarity, and visual hierarchy.</p>
+          </div>
+        </article>
+        <article class="project-card glow-card">
+          <div class="project-media media-3" role="img" aria-label="Project three preview"></div>
+          <div class="project-body">
+            <h3>Project Eclipse</h3>
+            <p>Interactive front-end experience with animation storytelling and clean code.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Your Name Here. All rights reserved.</p>
+      <div class="social-links" aria-label="Social media links">
+        <a href="#" aria-label="GitHub profile">GitHub</a>
+        <a href="#" aria-label="LinkedIn profile">LinkedIn</a>
+        <a href="#" aria-label="Instagram profile">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
