@@ -599,8 +599,8 @@ section {
 /* Compact Timeline */
 .tl {
   position: relative;
-  padding-left: 28px;
-  max-width: 520px;
+  padding-left: 30px;
+  max-width: 580px;
 }
 
 .tl::before {
@@ -622,28 +622,62 @@ section {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 0.85rem 1.1rem;
-  margin-bottom: 1.2rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.4rem;
   box-shadow: var(--shadow-soft);
 }
 
+.tl-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
 .tl-node strong {
-  display: block;
   font-size: 0.95rem;
   color: var(--text-main);
-  margin-bottom: 0.25rem;
+}
+
+.tl-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: rgba(73, 169, 255, 0.12);
+  border: 1px solid rgba(73, 169, 255, 0.25);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
 }
 
 .tl-desc {
-  font-size: 0.8rem;
+  display: block;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  line-height: 1.35;
+  line-height: 1.4;
+}
+
+.tl-arrow {
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tl-node:hover .tl-arrow {
+  opacity: 1;
+  transform: translateY(-50%) translateX(3px);
 }
 
 .tl-dot {
   position: absolute;
-  left: -24px;
-  top: 1rem;
+  left: -26px;
+  top: 1.1rem;
   width: 12px;
   height: 12px;
   border-radius: 50%;
