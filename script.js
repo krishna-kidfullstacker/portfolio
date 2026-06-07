@@ -8,7 +8,7 @@ const profileFallback = document.getElementById("profileFallback");
 const particlesContainer = document.getElementById("particles");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-const isMobile = window.matchMedia("(max-width: 600px)").matches;
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || window.matchMedia("(max-width: 840px)").matches;
 const glowCards = document.querySelectorAll(".glow-card");
 
 if (yearEl) {
@@ -62,7 +62,7 @@ function createParticle(index) {
   dot.className = "particle";
   dot.style.left = `${Math.random() * 100}%`;
   dot.style.bottom = `${-10 - Math.random() * 30}px`;
-  dot.style.opacity = `${0.3 + Math.random() * 0.5}`;
+  dot.style.opacity = `${isTouchDevice ? 0.55 + Math.random() * 0.4 : 0.3 + Math.random() * 0.5}`;
   dot.style.animationDelay = `${index * 0.3}s`;
   dot.style.animationDuration = `${8 + Math.random() * 6}s`;
   particlesContainer.appendChild(dot);
@@ -92,13 +92,13 @@ function updateGlowPosition(clientX, clientY) {
   document.body.style.setProperty("--my", `${y * 0.7}%`);
 }
 
-for (let i = 0; i < (isMobile ? 22 : 30); i += 1) {
+for (let i = 0; i < 30; i += 1) {
   if (!reducedMotion) {
     createParticle(i);
   }
 }
 
-for (let i = 0; i < (isMobile ? 10 : 14); i += 1) {
+for (let i = 0; i < 14; i += 1) {
   if (!reducedMotion) {
     createRune(i);
   }
