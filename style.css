@@ -47,6 +47,7 @@ body::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  background-color: #020617;
   background-image:
     radial-gradient(ellipse 90% 55% at 12% -5%, var(--ambient-blue), transparent 62%),
     radial-gradient(ellipse 85% 50% at 88% 8%, var(--ambient-violet), transparent 62%),
@@ -190,6 +191,14 @@ main {
 
 .brand span {
   color: var(--accent);
+}
+
+.brand-long {
+  display: inline;
+}
+
+.brand-short {
+  display: none;
 }
 
 .brand::after {
@@ -710,7 +719,8 @@ section {
     background-image:
       radial-gradient(420px 320px at var(--mx) var(--my), rgba(73, 169, 255, 0.38), transparent 60%),
       radial-gradient(460px 340px at 78% 20%, rgba(143, 116, 255, 0.34), transparent 60%);
-    animation: auraShift 8s ease-in-out infinite alternate, mobileGlowDrift 12s ease-in-out infinite;
+    filter: none;
+    animation: none;
   }
 
   .background-glow::before {
@@ -839,10 +849,18 @@ section {
   }
 
   .brand {
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     max-width: calc(100% - 52px);
-    line-height: 1.25;
-    white-space: normal;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .brand-long {
+    display: none;
+  }
+
+  .brand-short {
+    display: inline;
   }
 
   .nav {
@@ -996,7 +1014,7 @@ section {
   }
 
   .brand {
-    font-size: 0.72rem;
+    font-size: 0.88rem;
     max-width: calc(100% - 48px);
   }
 
@@ -1163,5 +1181,84 @@ section {
 @media (max-width: 840px) {
   .tl {
     max-width: 100%;
+  }
+}
+
+/* Force dark theme + readable text on all phones (fixes iOS light washout) */
+@media screen and (max-width: 840px) {
+  html,
+  body {
+    background-color: #020617;
+    color: #f3f6ff;
+  }
+
+  body::before {
+    background-color: #020617;
+  }
+
+  main,
+  .hero,
+  section,
+  .page-hero,
+  .site-header,
+  .site-footer {
+    background-color: transparent;
+    color: #f3f6ff;
+  }
+
+  h1,
+  h2,
+  h3,
+  .brand,
+  .brand-short,
+  .brand-long,
+  .tl-node strong {
+    color: #ffffff;
+  }
+
+  .role {
+    color: #dbe8ff;
+  }
+
+  .intro,
+  .page-hero p,
+  .page-note,
+  .card p,
+  .card li,
+  .project-body p,
+  .blog-card p,
+  .tl-desc,
+  .footer-content p,
+  .social-links a,
+  .nav-links a {
+    color: #c5d4f0;
+  }
+
+  .nav-links a.active,
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    color: #ffffff;
+  }
+
+  .eyebrow,
+  .brand span {
+    color: #5db8ff;
+  }
+
+  .background-glow {
+    filter: none;
+    animation: none;
+  }
+
+  .background-glow::after {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html,
+  body {
+    background-color: #020617;
+    color: #f3f6ff;
   }
 }
