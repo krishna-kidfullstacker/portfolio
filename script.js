@@ -7,6 +7,8 @@ const profileImage = document.getElementById("profileImage");
 const profileFallback = document.getElementById("profileFallback");
 const particlesContainer = document.getElementById("particles");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const isMobile = window.matchMedia("(max-width: 600px)").matches;
 const glowCards = document.querySelectorAll(".glow-card");
 
 if (yearEl) {
@@ -83,19 +85,19 @@ function createRune(index) {
   particlesContainer.appendChild(rune);
 }
 
-for (let i = 0; i < 30; i += 1) {
+for (let i = 0; i < (isMobile ? 14 : 30); i += 1) {
   if (!reducedMotion) {
     createParticle(i);
   }
 }
 
-for (let i = 0; i < 14; i += 1) {
+for (let i = 0; i < (isMobile ? 6 : 14); i += 1) {
   if (!reducedMotion) {
     createRune(i);
   }
 }
 
-if (!reducedMotion) {
+if (!reducedMotion && finePointer) {
   window.addEventListener("mousemove", (event) => {
     const x = (event.clientX / window.innerWidth) * 100;
     const y = (event.clientY / window.innerHeight) * 100;
@@ -105,6 +107,10 @@ if (!reducedMotion) {
 }
 
 glowCards.forEach((card) => {
+  if (!finePointer) {
+    return;
+  }
+
   card.addEventListener("mousemove", (event) => {
     if (reducedMotion) {
       return;
