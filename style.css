@@ -18,19 +18,24 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  color-scheme: dark;
+  background-color: #070a12;
 }
 
 body {
   margin: 0;
   font-family: "Segoe UI", "Inter", Arial, sans-serif;
-  background:
+  background-color: var(--bg-main);
+  background-image:
     radial-gradient(1000px 500px at 5% -5%, rgba(73, 169, 255, 0.18), transparent 60%),
     radial-gradient(900px 460px at 98% 0%, rgba(143, 116, 255, 0.16), transparent 62%),
     linear-gradient(165deg, #060911 0%, #070a12 45%, #0b1120 100%);
   color: var(--text-main);
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   overflow-x: hidden;
+  isolation: isolate;
   --mx: 50%;
   --my: 30%;
 }
@@ -39,20 +44,23 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
+  background-image:
     radial-gradient(600px 300px at var(--mx) var(--my), rgba(73, 169, 255, 0.16), transparent 65%),
     radial-gradient(700px 350px at 80% 20%, rgba(143, 116, 255, 0.14), transparent 65%);
-  z-index: -2;
+  z-index: 0;
   animation: auraShift 10s ease-in-out infinite alternate;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .background-glow::after {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(circle at 50% 25%, black 20%, transparent 80%);
   mask-image: radial-gradient(circle at 50% 25%, black 20%, transparent 80%);
 }
 
@@ -60,7 +68,9 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .particle {
@@ -124,9 +134,15 @@ body {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   background: rgba(8, 12, 24, 0.8);
   border-bottom: 1px solid var(--border);
   padding-top: env(safe-area-inset-top, 0);
+}
+
+main {
+  position: relative;
+  z-index: 1;
 }
 
 .nav {
@@ -475,6 +491,8 @@ section {
 }
 
 .site-footer {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid var(--border);
   padding: 1rem 0 calc(1.5rem + env(safe-area-inset-bottom, 0));
 }
@@ -602,6 +620,7 @@ section {
     border-radius: 12px;
     padding: 0.7rem 0.9rem;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--shadow-soft);
   }
 
@@ -642,6 +661,41 @@ section {
 
 /* ===== PHONE — max 600px ===== */
 @media (max-width: 600px) {
+  body {
+    background-color: #070a12;
+    background-image:
+      radial-gradient(420px 300px at 8% -8%, rgba(73, 169, 255, 0.3), transparent 58%),
+      radial-gradient(400px 280px at 92% 0%, rgba(143, 116, 255, 0.26), transparent 58%),
+      linear-gradient(165deg, #060911 0%, #070a12 45%, #0b1120 100%);
+  }
+
+  .background-glow {
+    background-image:
+      radial-gradient(340px 260px at var(--mx) var(--my), rgba(73, 169, 255, 0.24), transparent 62%),
+      radial-gradient(380px 280px at 78% 22%, rgba(143, 116, 255, 0.22), transparent 62%);
+    animation: auraShift 8s ease-in-out infinite alternate, mobileGlowDrift 14s ease-in-out infinite;
+  }
+
+  .particle {
+    background: rgba(170, 197, 255, 0.55);
+  }
+
+  .rune {
+    color: rgba(180, 206, 255, 0.58);
+  }
+
+  .eyebrow,
+  .brand span,
+  .tl-tag,
+  .tl-dot {
+    color: var(--accent);
+  }
+
+  .cta-btn {
+    background: linear-gradient(90deg, #3da3ff, #7ecfff);
+    box-shadow: 0 0 16px rgba(73, 169, 255, 0.35);
+  }
+
   .container {
     width: min(1120px, 88%);
   }
@@ -840,6 +894,16 @@ section {
 
   .tl-node {
     padding: 0.7rem 0.85rem;
+  }
+}
+
+@keyframes mobileGlowDrift {
+  0%,
+  100% {
+    filter: saturate(110%) brightness(1);
+  }
+  50% {
+    filter: saturate(140%) brightness(1.08);
   }
 }
 

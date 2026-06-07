@@ -85,25 +85,75 @@ function createRune(index) {
   particlesContainer.appendChild(rune);
 }
 
-for (let i = 0; i < (isMobile ? 14 : 30); i += 1) {
+function updateGlowPosition(clientX, clientY) {
+  const x = (clientX / window.innerWidth) * 100;
+  const y = (clientY / window.innerHeight) * 100;
+  document.body.style.setProperty("--mx", `${x}%`);
+  document.body.style.setProperty("--my", `${y * 0.7}%`);
+}
+
+for (let i = 0; i < (isMobile ? 22 : 30); i += 1) {
   if (!reducedMotion) {
     createParticle(i);
   }
 }
 
-for (let i = 0; i < (isMobile ? 6 : 14); i += 1) {
+for (let i = 0; i < (isMobile ? 10 : 14); i += 1) {
   if (!reducedMotion) {
     createRune(i);
   }
 }
 
-if (!reducedMotion && finePointer) {
-  window.addEventListener("mousemove", (event) => {
-    const x = (event.clientX / window.innerWidth) * 100;
-    const y = (event.clientY / window.innerHeight) * 100;
-    document.body.style.setProperty("--mx", `${x}%`);
-    document.body.style.setProperty("--my", `${y * 0.7}%`);
-  });
+if (!reducedMotion) {
+  if (finePointer) {
+    window.addEventListener("mousemove", (event) => {
+      updateGlowPosition(event.clientX, event.clientY);
+    });
+  } else {
+    let touchActive = false;
+
+    window.addEventListener(
+      "touchstart",
+      () => {
+        touchActive = true;
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "touchend",
+      () => {
+        touchActive = false;
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "touchmove",
+      (event) => {
+        const touch = event.touches[0];
+        if (touch) {
+          updateGlowPosition(touch.clientX, touch.clientY);
+        }
+      },
+      { passive: true }
+    );
+
+    let glowAngle = 0;
+    function mobileGlowLoop() {
+      if (!touchActive) {
+        glowAngle += 0.01;
+        const x = 50 + Math.sin(glowAngle) * 20;
+        const y = 32 + Math.cos(glowAngle * 0.75) * 14;
+        document.body.style.setProperty("--mx", `${x}%`);
+        document.body.style.setProperty("--my", `${y}%`);
+      }
+
+      requestAnimationFrame(mobileGlowLoop);
+    }
+
+    requestAnimationFrame(mobileGlowLoop);
+  }
 }
 
 glowCards.forEach((card) => {
